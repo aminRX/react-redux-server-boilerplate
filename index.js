@@ -18,6 +18,10 @@ const env = "development" || process.env.NODE_ENV;
 const isDeveloping = env !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
 
+const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/test');
+
 logger.info('[APP] Starting server initialization');
 
 nconf.use('memory');
@@ -25,8 +29,8 @@ nconf.argv();
 nconf.env();
 require('dotenv').load();
 
-require('./config/environments/' + env);
-require('./config/initializers/database').initDB();
+const environment = require('./config/environments/' + env);
+//require('./config/initializers/database').initDB(environment);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 // static files
@@ -59,6 +63,7 @@ logger.info('[SERVER] Initializing routes');
 
 // api routes
 app.use('/api', require('./app/routes/index'));
+
 // main page.
 app.get('/', function(req, res) {
   res.render('index');
