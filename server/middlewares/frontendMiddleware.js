@@ -1,21 +1,14 @@
 const addDevMiddlewares = (app, webpackConfig) => {
   const webpack = require('webpack');
-  const webpackMiddleware = require('webpack-dev-middleware');
-  const webpackHotMiddleware = require('webpack-hot-middleware');
   const compiler = webpack(webpackConfig);
-  const middleware = webpackMiddleware(compiler, {
-    stats: {
-      colors: true,
-      hash: false,
-      timings: true,
-      chunks: false,
-      chunkModules: false,
-      modules: false
-    }
-  });
 
-  app.use(middleware);
-  app.use(webpackHotMiddleware(compiler));
+  app.use(require("webpack-dev-middleware")(compiler, {
+    noInfo: true, publicPath: webpackConfig.output.publicPath
+  }));
+
+  app.use(require("webpack-hot-middleware")(compiler, {
+    log: console.log, path: '/__webpack_hmr', heartbeat: 10 * 1000
+  }));
 
   // main page.
   app.get('/', function(req, res) {
@@ -43,6 +36,7 @@ module.exports = (app, options) => {
   if (isProd) {
     addProdMiddlewares(app, options);
   } else {
+    console.log('---');
     const webpackConfig = require('./../webpack.config.js');
     addDevMiddlewares(app, webpackConfig);
   }

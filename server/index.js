@@ -14,9 +14,6 @@ logger.start();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-// static files
-app.use(express.static(path.join(__dirname, '../public')));
-app.use('/static', express.static(path.join(__dirname, '../dist')));
 
 // view engine pug
 app.set('view engine', 'pug');

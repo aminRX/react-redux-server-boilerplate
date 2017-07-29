@@ -1,4 +1,0 @@
-nconf
-logger
-morgan
-cors

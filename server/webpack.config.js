@@ -1,10 +1,16 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: './client/app.jsx',
+  context: __dirname,
+  entry: [
+    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+    './../app/app.jsx'
+  ],
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, '../dist')
+    path: __dirname,
+    publicPath: '/',
+    filename: 'bundle.js'
   },
   module: {
     rules: [
@@ -19,5 +25,10 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
+  ]
 };

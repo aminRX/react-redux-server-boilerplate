@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server",
     "webpack": "webpack",
-    "test": "NODE_ENV=test PORT=8080 mocha server/test/",
+    "test": "NODE_ENV=test PORT=8080 mocha server/test/ --timeout 15000",
     "debug": "nodemon --debug index.js",
     "lint": "eslint ."
   },
