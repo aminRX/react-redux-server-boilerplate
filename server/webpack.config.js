@@ -1,11 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
+process.noDeprecation = true;
 
 module.exports = {
   context: __dirname,
   entry: [
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
-    './../app/app.jsx'
+    './../app/index.jsx'
   ],
   output: {
     path: __dirname,
@@ -23,6 +24,11 @@ module.exports = {
             presets: ['react', 'es2015']
           }
         }
+      },
+      {
+        test: /\.css$/,
+        include: /node_modules/,
+        loaders: ['style-loader', 'css-loader']
       }
     ]
   },

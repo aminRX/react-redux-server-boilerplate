@@ -36,7 +36,6 @@ module.exports = (app, options) => {
   if (isProd) {
     addProdMiddlewares(app, options);
   } else {
-    console.log('---');
     const webpackConfig = require('./../webpack.config.js');
     addDevMiddlewares(app, webpackConfig);
   }
