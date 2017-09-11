@@ -16,12 +16,22 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env',"es2015", "react"]
+          }
+        }
+      },
+      {
         test: /\.jsx$/,
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['react', 'es2015']
+            presets: ['env', "es2015", "react"]
           }
         }
       },
@@ -31,6 +41,9 @@ module.exports = {
         loaders: ['style-loader', 'css-loader']
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),

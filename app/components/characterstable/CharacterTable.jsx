@@ -1,6 +1,7 @@
 import React from 'react';
 import Character from './Character.jsx';
 import Power from './Power.jsx';
+import CharacterForm from './CharacterForm.jsx';
 
 export default class CharacterTable extends React.Component {
   render() {
@@ -29,6 +30,7 @@ export default class CharacterTable extends React.Component {
             </tr>
           </thead>
           <tbody>
+            <CharacterForm />
             <Power power={'Nen'}/>
             {characters}
           </tbody>

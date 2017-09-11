@@ -1,13 +1,9 @@
-import {fromJS} from 'immutable';
+import { fromJS } from 'immutable';
+import { INCREMENT, DECREMENT } from './../constans/constans';
 
-import {
-  INCREMENT,
-  DECREMENT
-} from './../constans/constans';
+const initialState = fromJS({ count: 0 });
 
-const initialState = fromJS({count: 0});
-
-export default (state = initialState, action) => {
+export default function countApp(state = initialState, action) {
   switch (action.type) {
     case INCREMENT:
       return state.update('count', value => value + 1);

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class Counter extends Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class Counter extends Component {
 
   incrementIfOdd() {
     if (this.props.value % 2 !== 0) {
-      this.props.onIncrement()
+      this.props.onIncrement();
     }
   }
 
@@ -39,9 +39,9 @@ class Counter extends Component {
           Increment async
         </button>
       </p>
-    )
+    );
   }
 }
 
 
-export default Counter
+export default Counter;
