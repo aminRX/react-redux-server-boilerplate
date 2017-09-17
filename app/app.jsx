@@ -1,11 +1,10 @@
 import React from 'react';
 import VisibleTodoLists from './containers/VisibleTodoList';
 
-const App = () => {
+function App() {
   return (
     <VisibleTodoLists />
   );
-};
+}
 
 export default App;
-
