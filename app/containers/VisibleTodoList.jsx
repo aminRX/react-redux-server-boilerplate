@@ -15,9 +15,10 @@ export function makeMapStateToProps(state) {
 
 export function mapDispathToProps(dispatch) {
   return {
-    onClick: (name) => {
+    onClick(name) {
       dispatch(addTodo(name));
     },
+
     onChange: (input) => {
       dispatch(changeNameText(input));
     },

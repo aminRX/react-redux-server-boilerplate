@@ -1,13 +1,13 @@
-import {INCREMENT, DECREMENT} from './../constans/constans';
+import { INCREMENT, DECREMENT } from './../constans/constans';
 
 export function increment() {
   return {
-    type: INCREMENT
+    type: INCREMENT,
   };
 }
 
 export function decrement() {
   return {
-    type: DECREMENT
+    type: DECREMENT,
   };
 }

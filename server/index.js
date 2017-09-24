@@ -12,7 +12,7 @@ require('./mongo.js');
 
 logger.start();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // view engine pug
